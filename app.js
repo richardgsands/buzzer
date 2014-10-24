@@ -1,8 +1,9 @@
 var gpio = require('rpi-gpio');
 
-gpio.on('change', function(channel, value) {
-    console.log('Channel ' + channel + ' value is now ' + value);
-});
-gpio.setup(7, gpio.DIR_IN, function() {
-	console.log("Setup");
-});
+gpio.setup(7, gpio.DIR_IN, readInput);
+
+function readInput() {
+    gpio.read(7, function(err, value) {
+        console.log('The value is ' + value);
+    });
+}
