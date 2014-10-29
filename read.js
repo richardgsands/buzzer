@@ -9,7 +9,7 @@ var buzzing = false;
 var buzzTimeMs = 10000;
 
 var Mplayer = require('simple-mplayer')
-var music = new Mplayer('./buzzer.mp3');
+var music = new Mplayer('/home/pi/buzzer/buzzer.mp3');
 
 // Watch input pin
 gpio.open(inputPin, "input pulldown", function(err) { 
@@ -49,7 +49,10 @@ flash(ledPin, 100, 1000);
 function buzz() {
 
 	// Flash LED
-	flash(ledPin, 200, 8000);
+	flash(ledPin, 100, 1000);
+	setTimeout(function() {
+		flash(ledPin, 500, 7000);
+	}, 1000);
 
 	// Play buzzer.mp3
 	music.play(function(err, player) {
