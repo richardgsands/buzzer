@@ -8,20 +8,25 @@ var ledPin = 18;
 var buzzing = false;
 var buzzTimeMs = 10000;
 
+var player = new require('player')('./buzzer.mp3');
+
 // Watch input pin
 gpio.open(inputPin, "input pulldown", function(err) { 
 
 	setInterval(function() {
 
 		gpio.read(inputPin, function(err, value) {
-			console.log(value, buzzing);
+			//console.log(value, buzzing);
 
 			if (!buzzing && value == inputPinTriggerValue) {
+				console.log("Buzz...!");
+
 				buzzing = true;
 				setTimeout(function() {
 					buzzing = false;
 				}, buzzTimeMs)
 				buzz();
+
 			}
 		})
 
@@ -37,7 +42,9 @@ function buzz() {
 	flash(18, 200, 8000);
 
 	// Play buzzer.mp3
-
+	player.play(function(err, player) {
+		console.log('Playback finished');
+	});
 }
 
 
@@ -56,7 +63,7 @@ function flash(pin, interval, duration) {
 			gpio.write(pin, on, function() { 
 				// toggle pin between high (1) and low (0) 
 				on = (on + 1) % 2;
-				console.log(on) 
+				//console.log(on) 
 			}); 
 		}, interval); });
 
