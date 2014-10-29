@@ -47,7 +47,7 @@ function flash(pin, interval, duration) {
 		console.log('GPIO '+pin+' is open. toggling LED every '+interval+' mS for ' +duration+ ' mS');
 		intervalId = setInterval(function() { 
 			
-			gpio.write(gpioPin, on, function() { 
+			gpio.write(pin, on, function() { 
 				// toggle pin between high (1) and low (0) 
 				on = (on + 1) % 2;
 				console.log(on) 
@@ -58,11 +58,10 @@ function flash(pin, interval, duration) {
 			clearInterval(intervalId); 
 			clearTimeout(durationId); 
 			console.log('10onds blinking completed'); 
-			gpio.write(gpioPin, 0, function() { 
-				// turn off pin 16 
-				gpio.close(gpioPin); 
-				// then Close pin 16  and terminate the program
-				process.exit(0); 
+
+			// turn off pin 16 and close pin
+			gpio.write(pin, 0, function() { 
+				gpio.close(pin); 
 			}); 
 		}, duration); // duration in mS
 
