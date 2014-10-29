@@ -1,9 +1,10 @@
-var gpio = require('rpi-gpio');
+var gpio = require('pi-gpio');
 
-gpio.setup(7, gpio.DIR_IN, readInput);
+var intervalId;
+var durationId;
+var gpioPin = 16;	// header pin 16 = GPIO port 23
 
-function readInput() {
-    gpio.read(7, function(err, value) {
-        console.log('The value is ' + value);
-    });
-}
+gpio.open(gpioPin, "output", function(err) {
+	var on = 1;
+	
+});
