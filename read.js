@@ -51,8 +51,8 @@ function buzz() {
 	// Flash LED
 	flash(ledPin, 100, 1000);
 	setTimeout(function() {
-		flash(ledPin, 500, 7000);
-	}, 1000);
+		flash(ledPin, 500, 6000);
+	}, 1500);
 
 	// Play buzzer.mp3
 	music.play(function(err, player) {
