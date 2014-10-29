@@ -5,6 +5,8 @@ var inputPinTriggerValue = 1;
 
 var ledPin = 18;
 
+var buzzing = false;
+var buzzTimeMs = 10000;
 
 // Watch input pin
 gpio.open(inputPin, "input pulldown", function(err) { 
@@ -12,9 +14,13 @@ gpio.open(inputPin, "input pulldown", function(err) {
 	setInterval(function() {
 
 		gpio.read(inputPin, function(err, value) {
-			console.log(value);
+			console.log(value, buzzing);
 
-			if (value == inputPinTriggerValue) {
+			if (!pbuzzing && value == inputPinTriggerValue) {
+				buzzing = true;
+				setTimeout(function() {
+					buzzing = false;
+				}, buzzTimeMs)
 				buzz();
 			}
 		})
@@ -28,7 +34,7 @@ gpio.open(inputPin, "input pulldown", function(err) {
 function buzz() {
 
 	// Flash LED
-	flash(18, 200, 30000);
+	flash(18, 200, 8000);
 
 	// Play buzzer.mp3
 
