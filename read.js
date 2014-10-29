@@ -35,12 +35,21 @@ gpio.open(inputPin, "input pulldown", function(err) {
 
 });
 
+process.on('exit', function(code) {
+	// Close input pin
+	console.log("Exiting: close pin " +inputPin);
+  	gpio.close(inputPin);
+});
+
+// Startup
+console.log("Buzzer started");
+flash(ledPin, 100, 1000);
 
 // Activate buzzer
 function buzz() {
 
 	// Flash LED
-	flash(18, 200, 8000);
+	flash(ledPin, 200, 8000);
 
 	// Play buzzer.mp3
 	music.play(function(err, player) {
