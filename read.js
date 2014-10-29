@@ -16,7 +16,7 @@ gpio.open(inputPin, "input pulldown", function(err) {
 		gpio.read(inputPin, function(err, value) {
 			console.log(value, buzzing);
 
-			if (!pbuzzing && value == inputPinTriggerValue) {
+			if (!buzzing && value == inputPinTriggerValue) {
 				buzzing = true;
 				setTimeout(function() {
 					buzzing = false;
