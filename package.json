@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "pi-gpio": "0.0.6",
-    "player": "^0.1.8"
+    "simple-mplayer": "0.0.3"
   }
 }

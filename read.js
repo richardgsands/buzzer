@@ -8,7 +8,7 @@ var ledPin = 18;
 var buzzing = false;
 var buzzTimeMs = 10000;
 
-var player = new require('player')('./buzzer.mp3');
+var player = new require('simple-mplayer')('./buzzer.mp3');
 
 // Watch input pin
 gpio.open(inputPin, "input pulldown", function(err) { 
