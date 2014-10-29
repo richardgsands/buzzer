@@ -53,6 +53,7 @@ function buzz() {
 
 	// Play buzzer.mp3
 	music.play(function(err, player) {
+		if (err) console.log(err);
 		console.log('Playback finished');
 	});
 }
