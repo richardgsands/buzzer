@@ -1,13 +1,13 @@
 var gpio = require('pi-gpio');
 
 var inputPin = 16;	// header pin 16 = GPIO port 23
-var inputPinTriggerValue = 0;
+var inputPinTriggerValue = 1;
 
 var ledPin = 18;
 
 
 // Watch input pin
-gpio.open(inputPin, "input pullup", function(err) { 
+gpio.open(inputPin, "input pulldown", function(err) { 
 
 	setInterval(function() {
 
